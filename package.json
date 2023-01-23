@@ -1,13 +1,16 @@
 {
-  "name": "tilelive-promise",
-  "version": "2.0.0",
+  "name": "@wikimedia/tilelive-promise",
+  "version": "2.1.0",
   "description": "Adds an extended Promise-based interface to the existing tilelive components, or exposes new components to older tilelive systems.",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
     "preversion": "npm test"
   },
-  "repository": "kartotherian/tilelive-promise",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wikimedia/tilelive-promise.git"
+  },
   "keywords": [
     "tilelive",
     "promise",
@@ -17,6 +20,7 @@
   "license": "MIT",
   "bugs": "https://github.com/kartotherian/tilelive-promise/issues",
   "homepage": "https://github.com/kartotherian/tilelive-promise#readme",
+  "files": [ "index.js" ],
   "dependencies": {
     "quadtile-index": "^0.0.6"
   },

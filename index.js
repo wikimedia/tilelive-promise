@@ -30,13 +30,26 @@ function injectAsync(source) {
             switch (opts.type) {
                 case undefined:
                 case 'tile':
-                    source.getTile(opts.z, x, y, (err, data, hdrs) => {
+                    var cb = function(err, data, hdrs) {
                         if (err) {
                             reject(err);
                         } else {
                             resolve({data: data, headers: hdrs});
                         }
-                    });
+                    };
+
+                    // fallback for tilelive-vector
+                    cb.format = opts.format;
+                    cb.scale = opts.scale;
+                    cb.profile = opts.profile;
+                    cb.legacy = opts.legacy;
+                    cb.upgrade = opts.upgrade;
+                    cb.renderer = opts.renderer;
+                    cb.setSrcData = opts.setSrcData;
+                    cb.raw_buffer = opts.raw_buffer;
+                    cb.treatAsVector = opts.treatAsVector;
+
+                    source.getTile(opts.z, x, y, cb );
                     break;
                 case 'grid':
                     source.getGrid(opts.z, x, y, (err, data, hdrs) => {
